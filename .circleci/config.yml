@@ -78,7 +78,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: ["frontend-build"]
+          keys: frontend-build
       - run:
           name: Front-end test
           command: |
@@ -92,7 +92,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: ["backend-build"]
+          keys: backend-build
       - run:
           name: Build-end test
           command: |
@@ -106,12 +106,12 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: ["frontend-build"]
+          keys: frontend-build
       - run:
           name: Scan-frontend
           command: |
-              cd frontend
-              npm audit --audit-level=critical --force
+            cd frontend
+            npm audit fix --audit-level=critical --force
       - slack/notify:
           event: fail
           template: basic_fail_1
@@ -121,12 +121,12 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: ["backend-build"]
+          keys: backend-build
       - run:
           name: Scan-backend
           command: |
-              cd backend
-              npm audit --audit-level=critical --force
+            cd backend
+            npm audit fix --audit-level=critical --force
       - slack/notify:
           event: fail
           template: basic_fail_1
