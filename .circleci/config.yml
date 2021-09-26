@@ -78,7 +78,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: [front-test]
+          keys: ["frontend-build"]
       - run:
           name: Front-end test
           command: |
@@ -92,7 +92,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: [back-test]
+          keys: ["backend-build"]
       - run:
           name: Build-end test
           command: |
@@ -106,7 +106,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: [front-scan]
+          keys: ["frontend-build"]
       - run:
           name: Scan-frontend
           command: |
@@ -121,7 +121,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: [back-scan]
+          keys: ["backend-build"]
       - run:
           name: Scan-backend
           command: |
